@@ -1,0 +1,64 @@
+<!--empty=e
+
+pink_king=k
+black_king=K
+
+pink_queen=q
+black_queen=Q
+
+pink_rook=r
+black_rook=R
+
+pink_pawn=p
+black_pawn=P
+
+pink_knight=n
+black_knight=N
+
+pink_bishop=b
+black_bishop=B
+-->
+{% load index %}
+{% load static %}
+<style type="text/css">
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border: 6px solid pink;
+    padding: 2px;
+    width:64px;
+    height:64px;
+    text-align: center;
+}
+table tr:nth-child(2n) td:nth-child(2n) {
+  background-color: gray;
+}
+table tr:nth-child(2n+1) td:nth-child(2n+1) {
+  background-color: gray;
+}
+
+.piece{
+        width:60px;
+        height:60px;
+       }
+</style>
+
+<center>
+<table style="border-collapse: collapse">
+    {% for i in "01234567" %}
+        <tr>
+            {% for j in "01234567" %}
+                <td><img class="piece" src="{% static list1|index:i|index:j %}"></td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+</center>
+
+
+
+
+
