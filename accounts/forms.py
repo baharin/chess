@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import (authenticate,get_user_model,login,logout,)
 from django.forms import ModelForm
-
+from django.core.mail import send_mail
 
 user= get_user_model()
 class UserLoginForm(forms.Form):
@@ -37,7 +37,6 @@ class UserRegisterForm(forms.ModelForm):
             'email2',
             'password'
         ]
-
     def clean_email2(self):
         email=self.cleaned_data.get('email')
         email2 = self.cleaned_data.get('email2')

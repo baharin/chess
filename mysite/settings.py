@@ -27,10 +27,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+MAILER_EMAIL_BACKEND = EMAIL_BACKEND
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'icp95.project@gmail.com'
+EMAIL_HOST_PASSWORD = 'ostadnowzari'
+SERVER_EMAIL = 'icp95.project@gmail.com'
 
 # Application definition
 
 INSTALLED_APPS = [
+
     'crispy_forms',
     'accounts.apps.AccountsConfig',
     'personal.apps.PersonalConfig',

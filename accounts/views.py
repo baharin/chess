@@ -1,6 +1,7 @@
+from django.conf import settings
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
 from django.shortcuts import render,redirect
-
+from django.core.mail import send_mail
 from .forms import UserLoginForm,UserRegisterForm
 
 
@@ -24,6 +25,11 @@ def register_view(request):
         password=form.cleaned_data.get('password')
         user.set_password(password)
         user.save()
+        subject= 'Confirmation Email'
+        message= 'Thanks for registering in my site. Hope you enjoy playing chess!'
+        from_email=settings.EMAIL_HOST_USER
+        to_list=[user.email]
+        send_mail(subject,message,from_email,to_list,fail_silently=True)
         login(request, user)
         return redirect("/game")
     context={
