@@ -3,7 +3,8 @@ from django.contrib.auth import (authenticate, get_user_model, login, logout)
 from django.shortcuts import render,redirect
 from django.core.mail import send_mail
 from .forms import UserLoginForm,UserRegisterForm
-
+from accounts.models import Game
+from accounts.chess import Chess
 
 def login_view(request):
     title= "Login"
@@ -31,6 +32,8 @@ def register_view(request):
         to_list=[user.email]
         send_mail(subject,message,from_email,to_list,fail_silently=True)
         login(request, user)
+        g = Game ( user = user )
+        g.save ()
         return redirect("/game")
     context={
         "form":form,
@@ -45,10 +48,28 @@ def logout_view(request):
 
 
 def game_view(request):
-    default_state = "RNBQKBNRPPPPPPPPeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeepppppppprnbqkbnr"
-    state_list = []
-    for i in range(0, 8):
-        state_list.append(default_state[8 * i:8 * i + 9])
+    user=request.user
+    content={}
+    game = Game.objects.get(user=user)
+    state_list = request.user.game.state.split('/')
+    if ( request.method == "POST" ):
+        user_move = request.POST.get ( 'move' )
+        test=Chess(game.state)
+        user_movel = map(int, user_move.split())
+        origin = user_movel[:2]
+        dist = user_movel[2:]
+        if not test.is_valid(origin,state_list,dist   ):
+            content['error']="Your move isn't valid"
+        else:
+            user_movel  = map ( int, user_move.split () )
+            origin= user_movel[:2]
+            dist=user_movel[2:]
+            state_list=test.update_state_with_move(origin,state_list,dist)
+            AI_move=test.minimax(state_list,3,"AI")[1]
+            game.state = AI_move
+            game.save()
+    state_list = request.user.game.state.split('/')
+    
     chess_pieces_dict={
         "b":"b0.png",
         "k":"k0.png",
@@ -69,8 +90,7 @@ def game_view(request):
         list1.append([])
         for j in i:
             list1[-1].append(chess_pieces_dict[j])
+    content["list1"]=list1
+    return render(request, "personal/game.html",content)
 
-
-
-
-    return render(request, "personal/game.html",{'list1':list1})
+    

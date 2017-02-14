@@ -24,9 +24,9 @@ class Chess:
             final_state_list.append(list1)
             list1=[]
         return final_state_list
-    
-    
-    
+
+    def make_str(self,state_list):
+        return [ '/'.join (l) for l in state_list ]
     
     def move(self,origin,state_list,piece):
         i=origin[0]
@@ -566,6 +566,7 @@ class Chess:
                     if v>best_value:
                         best_value=v
                         final_state=child
+            final_state = self.make_str(final_state)
             return (best_value,final_state)
         if turn == "user":
             best_value = 1000000
@@ -575,9 +576,5 @@ class Chess:
                     if v<best_value:
                         best_value=v
                         final_state=child
+            final_state= self.make_str(final_state)
             return (best_value,final_state)
-
-state="RNBQKBNR/PPPPPPPP/eeeeeeee/eeeeeeee/eeeeeeee/eeeeeeee/pppppppp/rnbqkbnr"
-ai_obj = Chess(state)
-
-

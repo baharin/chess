@@ -48,6 +48,12 @@ table tr:nth-child(2n+1) td:nth-child(2n+1) {
 </style>
 
 <center>
+    <table>
+        {% for i in "01234567" %}
+            <tr>{{ i }}</tr>
+        {% endfor %}
+
+    </table>
 <table style="border-collapse: collapse">
     {% for i in "01234567" %}
         <tr>
@@ -57,7 +63,15 @@ table tr:nth-child(2n+1) td:nth-child(2n+1) {
         </tr>
     {% endfor %}
 </table>
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}
+    <input type="text" name="move">
+    <input type="submit" value="move">
+</form>
 </center>
+
+
 
 
 
