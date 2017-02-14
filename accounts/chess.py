@@ -150,41 +150,41 @@ class Chess:
                     break
                     
         if piece=="K":
-            if "a"<state_list[i-1][j]<"z" and 0<= i-1 <8:
+            if 0<= i-1 <8 and "a"<state_list[i-1][j]<"z" :
                 moves_list.append((i-1,j))
-            if "a"<state_list[i+1][j]<"z" and 0<= i+1<8:
+            if 0<= i+1<8 and "a"<state_list[i+1][j]<"z" :
                 moves_list.append((i+1, j))
-            if "a"<state_list[i][j+1]<"z" and 0<= j+1<8:
+            if  0<= j+1<8 and "a"<state_list[i][j+1]<"z":
                 moves_list.append((i,j+1))
-            if "a"<state_list[i][j-1]<"z" and 0<= j-1 <8:
+            if  0<= j-1 <8 and "a"<state_list[i][j-1]<"z":
                 moves_list.append((i,j-1))
-            if "a"<state_list[i-1][j+1]<"z" and 0<= i-1<8 and 0<= j+1<8:
+            if  0<= i-1<8 and 0<= j+1<8 and "a"<state_list[i-1][j+1]<"z":
                 moves_list.append((i-1,j+1))
-            if "a"<state_list[i-1][j-1]<"z" and 0<= i-1 <8 and 0<= j-1<8:
+            if  0<= i-1 <8 and 0<= j-1<8 and "a"<state_list[i-1][j-1]<"z":
                 moves_list.append((i-1,j-1))
-            if "a"<state_list[i+1][j-1]<"z" and 0<= i+1<8 and 0<= j-1<8:
+            if  0<= i+1<8 and 0<= j-1<8 and "a"<state_list[i+1][j-1]<"z":
                 moves_list.append((i+1,j-1))
-            if "a"<state_list[i+1][j+1]<"z" and 0<=i+1<8 and 0<=j+1<8:
+            if  0<=i+1<8 and 0<=j+1<8 and "a"<state_list[i+1][j+1]<"z":
                 moves_list.append((i+1,j+1))
         
         if piece == "Q":
             k = i
             r = j
-            while (state_list[i - 1][j] == "e" or "a" < state_list[i - 1][j] < "z") and 0 <= i - 1 < 8:  # |
+            while  0 <= i - 1 < 8 and (state_list[i - 1][j] == "e" or "a" < state_list[i - 1][j] < "z"):  # |
                 moves_list.append((i - 1, j))
                 if state_list[i-1][j]!="e":
                     break
                 i = i - 1
-                if "a" < state_list[i - 1][j] < "z" and state_list[i-1][j]!="e" and 0 <= i - 1 < 8:
+                if  0 <= i - 1 < 8 and "a" < state_list[i - 1][j] < "z" and state_list[i-1][j]!="e":
                     moves_list.append((i - 1, j))
                     break
             i = k
-            while (state_list[i + 1][j] == "e" or "a" < state_list[i + 1][j] < "z") and 0 <= i + 1 < 8:  # |
+            while  0 <= i + 1 < 8 and (state_list[i + 1][j] == "e" or "a" < state_list[i + 1][j] < "z") :  # |
                 moves_list.append((i + 1, j))
                 if state_list[i+1][j]!="e":
                     break
                 i = i + 1
-                if "a" < state_list[i + 1][j] < "z" and state_list[i+1][j]!="e" and 0<= i + 1 < 8:
+                if  0<= i + 1 < 8 and "a" < state_list[i + 1][j] < "z" and state_list[i+1][j]!="e":
                     moves_list.append((i + 1, j))
                     break
             i = k
@@ -217,31 +217,31 @@ class Chess:
                     break
                 i = i - 1
                 j = j + 1
-                if "a" < state_list[i - 1][j + 1] < "z"and state_list[i-1][j+1]!="e" and 0 <= i - 1 < 8 and 0 <= j + 1 < 8:
+                if 0 <= i - 1 < 8 and 0 <= j + 1 < 8 and "a" < state_list[i - 1][j + 1] < "z"and state_list[i-1][j+1]!="e" :
                     moves_list.append((i - 1, j + 1))
                     break
             i = k
             j = r
     
-            while (state_list[i + 1][j - 1] == "e" or "a" < state_list[i + 1][j - 1] < "z") and 0 <= i + 1 < 8 and 0 <= j - 1 < 8:  # /
+            while  0 <= i + 1 < 8 and 0 <= j - 1 < 8 and (state_list[i + 1][j - 1] == "e" or "a" < state_list[i + 1][j - 1] < "z") :  # /
                 moves_list.append((i + 1, j - 1))
                 if state_list[i+1][j-1]!="e":
                     break
                 i = i + 1
                 j = j - 1
-                if "a" < state_list[i + 1][j - 1] < "z" and state_list[i+1][j-1]!="e" and 0 <= i + 1 < 8 and 0 <= j - 1 < 8:
+                if  0 <= i + 1 < 8 and 0 <= j - 1 < 8 and "a" < state_list[i + 1][j - 1] < "z" and state_list[i+1][j-1]!="e":
                     moves_list.append((i + 1, j - 1))
                     break
             i = k
             j = r
     
-            while (state_list[i - 1][j - 1] == "e" or "a" < state_list[i - 1][j - 1] < "z") and 0 <= i - 1 < 8 and 0 <= j - 1 < 8:  # \
+            while  0 <= i - 1 < 8 and 0 <= j - 1 < 8 and (state_list[i - 1][j - 1] == "e" or "a" < state_list[i - 1][j - 1] < "z") :  # \
                 moves_list.append((i - 1, j - 1))
                 if state_list[i-1][j-1]!="e":
                     break
                 i = i - 1
                 j = j - 1
-                if "a" < state_list[i - 1][j - 1] < "z" and state_list[i-1][j-1]!="e"  and 0 <= i - 1 < 8 and 0 <= j - 1 < 8:
+                if 0 <= i - 1 < 8 and 0 <= j - 1 < 8 and "a" < state_list[i - 1][j - 1] < "z" and state_list[i-1][j-1]!="e" :
                     moves_list.append((i - 1, j - 1))
                     break
             i = k
@@ -259,17 +259,17 @@ class Chess:
                         
                         
         if piece == "k":
-            if ("A"<state_list[i - 1][j]<"Z" or state_list[i-1][j]=="e") and 0 <= i - 1 < 8:
+            if  0 <= i - 1 < 8 and ("A"<state_list[i - 1][j]<"Z" or state_list[i-1][j]=="e"):
                 moves_list.append((i - 1, j))
             if  0 <= i + 1 < 8 and ("A"<state_list[i + 1][j]<"Z" or state_list[i+1][j]=="e"):
                 moves_list.append((i + 1, j))
             if  0 <= j + 1 < 8 and ("A"<state_list[i][j + 1] <"Z" or state_list[i][j+1]=="e"):
                 moves_list.append((i, j + 1))
-            if ("A"<state_list[i][j - 1] <"Z" or state_list[i][j-1]=="e") and 0 <= j - 1 < 8:
+            if  0 <= j - 1 < 8 and ("A"<state_list[i][j - 1] <"Z" or state_list[i][j-1]=="e"):
                 moves_list.append((i, j - 1))
             if 0 <= i - 1 < 8 and 0 <= j + 1 < 8 and ("A"<state_list[i - 1][j + 1] <"Z" or state_list[i-1][j+1]=="e") :
                 moves_list.append((i - 1, j + 1))
-            if ("A"<state_list[i - 1][j - 1] <"Z" or state_list[i-1][j-1]=="e") and 0 <= i - 1 < 8 and 0 <= j - 1 < 8:
+            if  0 <= i - 1 < 8 and 0 <= j - 1 < 8 and ("A"<state_list[i - 1][j - 1] <"Z" or state_list[i-1][j-1]=="e"):
                 moves_list.append((i - 1, j - 1))
             if 0 <= i + 1 < 8 and 0 <= j - 1 < 8 and ("A"<state_list[i + 1][j - 1] <"Z" or state_list[i+1][j-1]=="e" ):
                 moves_list.append((i + 1, j - 1))
@@ -279,7 +279,7 @@ class Chess:
         if piece == "p":
             if state_list[i - 1][j] == "e" and 0 <= i - 1 < 8:
                 moves_list.append((i - 1, j))
-            if "A" < state_list[i - 1][j - 1] < "Z" and state_list[i - 1][j - 1] != "e" and 0 <= i - 1 < 8 and 0 <= j - 1 < 8:
+            if  0 <= i - 1 < 8 and 0 <= j - 1 < 8 and "A" < state_list[i - 1][j - 1] < "Z" and state_list[i - 1][j - 1] != "e":
                 moves_list.append((i + 1, j + 1))
             if 0 <= i - 1 < 8 and 0 <= j + 1 < 8 and "A" < state_list[i - 1][j + 1] < "Z" and state_list[i - 1][j + 1] != "e" :
                 moves_list.append((i - 1, j + 1))
@@ -287,12 +287,12 @@ class Chess:
         if piece == "r":
             k = i
             r = j
-            while (state_list[i - 1][j] == "e" or "A" < state_list[i - 1][j] < "Z") and 0 <= i - 1 < 8:  # |
+            while  0 <= i - 1 < 8 and (state_list[i - 1][j] == "e" or "A" < state_list[i - 1][j] < "Z"):  # |
                 moves_list.append((i - 1, j))
                 if state_list[i-1][j]!="e":
                     break
                 i = i - 1
-                if "A" < state_list[i - 1][j] < "Z" and state_list[i-1][j]!="e" and 0 <= i - 1 < 8:
+                if 0 <= i - 1 < 8 and "A" < state_list[i - 1][j] < "Z" and state_list[i-1][j]!="e" :
                     moves_list.append((i - 1, j))
                     break
             i = k
@@ -311,23 +311,23 @@ class Chess:
                 if state_list[i][j+1]!="e":
                     break
                 j = j + 1
-                if "A" < state_list[i][j + 1] < "Z" and state_list[i][j+1]!="e" and  0 <= j + 1 < 8:
+                if  0 <= j + 1 < 8 and "A" < state_list[i][j + 1] < "Z" and state_list[i][j+1]!="e":
                     moves_list.append((i, j + 1))
                     break
             i = k
             j = r
-            while (state_list[i][j - 1] == "e" or "A" < state_list[i][j - 1] < "Z") and 0 <= j - 1 < 8:  # -
+            while  0 <= j - 1 < 8 and (state_list[i][j - 1] == "e" or "A" < state_list[i][j - 1] < "Z"):  # -
                 moves_list.append((i, j - 1))
                 if state_list[i][j-1]!="e":
                     break
                 j = j - 1
-                if "A" < state_list[i][j - 1] < "Z" and state_list[i][j-1]!="e" and 0 <= j - 1 < 8:
+                if  0 <= j - 1 < 8 and "A" < state_list[i][j - 1] < "Z" and state_list[i][j-1]!="e":
                     moves_list.append((i, j - 1))
                     break
                     
                     
         if piece == "n":
-            if "A" < state_list[i - 1][j - 2] < "Z" and 0 <= i - 1 < 8 and 0 <= j - 2 < 8:
+            if  0 <= j - 2 < 8 and "A" < state_list[i - 1][j - 2] < "Z" and 0 <= i - 1 < 8:
                 moves_list.append((i - 1, j - 2))
             if  0 <= i + 1 < 8 and 0 <= j - 2 < 8 and "A" < state_list[i + 1][j - 2] < "Z" :
                 moves_list.append((i + 1, j - 2))
@@ -339,20 +339,20 @@ class Chess:
                 moves_list.append((i + 2, j - 1))
             if 0 <= i + 2 < 8 and 0 <= j + 1 < 8 and "A" < state_list[i + 2][j + 1] < "Z":
                 moves_list.append((i + 2, j + 1))
-            if "A" < state_list[i - 2][j - 1] < "Z" and 0 <= i - 2 < 8 and 0 <= j - 1 < 8:
+            if  0 <= i - 2 < 8 and 0 <= j - 1 < 8 and "A" < state_list[i - 2][j - 1] < "Z" :
                 moves_list.append((i - 2, j - 1))
-            if "A" < state_list[i - 2][j + 1] < "Z" and 0 <= i - 2 < 8 and 0 <= j + 1 < 8:
+            if  0 <= i - 2 < 8 and 0 <= j + 1 < 8 and "A" < state_list[i - 2][j + 1] < "Z" :
                 moves_list.append((i - 2, j + 1))
         
         if piece == "q":
             k = i
             r = j
-            while (state_list[i - 1][j] == "e" or "A" < state_list[i - 1][j] < "Z") and 0 <= i - 1 < 8:  # |
+            while 0 <= i - 1 < 8 and (state_list[i - 1][j] == "e" or "A" < state_list[i - 1][j] < "Z"):  # |
                 moves_list.append((i - 1, j))
                 if state_list[i - 1][j] != "e":
                     break
                 i = i - 1
-                if "A" < state_list[i - 1][j] < "Z" and state_list[i - 1][j] != "e" and 0 <= i - 1 < 8:
+                if  0 <= i - 1 < 8 and "A" < state_list[i - 1][j] < "Z" and state_list[i - 1][j] != "e":
                     moves_list.append((i - 1, j))
                     break
             i = k
@@ -361,7 +361,7 @@ class Chess:
                 if state_list[i + 1][j] != "e":
                     break
                 i = i + 1
-                if "A" < state_list[i + 1][j] < "Z" and state_list[i + 1][j] != "e" and 0 <= i + 1 < 8:
+                if  0 <= i + 1 < 8 and "A" < state_list[i + 1][j] < "Z" and state_list[i + 1][j] != "e" :
                     moves_list.append((i + 1, j))
                     break
             i = k
@@ -371,17 +371,17 @@ class Chess:
                 if state_list[i][j + 1] != "e":
                     break
                 j = j + 1
-                if "A" < state_list[i][j + 1] < "Z" and state_list[i][j + 1] != "e" and 0 <= j + 1 < 8:
+                if  0 <= j + 1 < 8 and "A" < state_list[i][j + 1] < "Z" and state_list[i][j + 1] != "e" :
                     moves_list.append((i, j + 1))
                     break
             i = k
             j = r
-            while (state_list[i][j - 1] == "e" or "A" < state_list[i][j - 1] < "Z") and 0 <= j - 1 < 8:  # -
+            while  0 <= j - 1 < 8 and (state_list[i][j - 1] == "e" or "A" < state_list[i][j - 1] < "Z") :  # -
                 moves_list.append((i, j - 1))
                 if state_list[i][j - 1] != "e":
                     break
                 j = j - 1
-                if "A" < state_list[i][j - 1] < "Z" and state_list[i][j - 1] != "e" and 0 <= j - 1 < 8:
+                if 0 <= j - 1 < 8 and "A" < state_list[i][j - 1] < "Z" and state_list[i][j - 1] != "e":
                     moves_list.append((i, j - 1))
                     break
     
@@ -395,8 +395,8 @@ class Chess:
                     break
                 i = i - 1
                 j = j + 1
-                if "A" < state_list[i - 1][j + 1] < "Z" and state_list[i - 1][
-                            j + 1] != "e" and 0 <= i - 1 < 8 and 0 <= j + 1 < 8:
+                if  0 <= i - 1 < 8 and 0 <= j + 1 < 8 and "A" < state_list[i - 1][j + 1] < "Z" and state_list[i - 1][
+                            j + 1] != "e":
                     moves_list.append((i - 1, j + 1))
                     break
             i = k
@@ -409,22 +409,22 @@ class Chess:
                     break
                 i = i + 1
                 j = j - 1
-                if "A" < state_list[i + 1][j - 1] < "Z" and state_list[i + 1][
-                            j - 1] != "e" and 0 <= i + 1 < 8 and 0 <= j - 1 < 8:
+                if 0 <= i + 1 < 8 and 0 <= j - 1 < 8 and "A" < state_list[i + 1][j - 1] < "Z" and state_list[i + 1][
+                            j - 1] != "e" :
                     moves_list.append((i + 1, j - 1))
                     break
             i = k
             j = r
         
-            while (state_list[i - 1][j - 1] == "e" or "A" < state_list[i - 1][
-                    j - 1] < "Z") and 0 <= i - 1 < 8 and 0 <= j - 1 < 8:  # \
+            while 0 <= i - 1 < 8 and 0 <= j - 1 < 8 and (state_list[i - 1][j - 1] == "e" or "A" < state_list[i - 1][
+                    j - 1] < "Z") :  # \
                 moves_list.append((i - 1, j - 1))
                 if state_list[i - 1][j - 1] != "e":
                     break
                 i = i - 1
                 j = j - 1
-                if "A" < state_list[i - 1][j - 1] < "Z" and state_list[i - 1][
-                            j - 1] != "e" and 0 <= i - 1 < 8 and 0 <= j - 1 < 8:
+                if  0 <= i - 1 < 8 and 0 <= j - 1 < 8 and "A" < state_list[i - 1][j - 1] < "Z" and state_list[i - 1][
+                            j - 1] != "e":
                     moves_list.append((i - 1, j - 1))
                     break
             i = k
@@ -480,7 +480,8 @@ class Chess:
         else:
             piece=state_list[i][j]
             valid_moves=self.move(origin,state_list,piece)
-            if move in valid_moves:
+            print ("valid",valid_moves)
+            if move[0]==valid_moves[0][0] and move[1]==valid_moves[0][1]:
                 return True
             else:
                 return False
@@ -566,6 +567,7 @@ class Chess:
                     if v>best_value:
                         best_value=v
                         final_state=child
+
             final_state = self.make_str(final_state)
             return (best_value,final_state)
         if turn == "user":
@@ -577,4 +579,6 @@ class Chess:
                         best_value=v
                         final_state=child
             final_state= self.make_str(final_state)
+            print (final_state)
             return (best_value,final_state)
+

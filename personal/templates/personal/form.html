@@ -7,7 +7,7 @@
 <h1>{{title}}</h1>
 <hr/>
 
-<form method='POST' action='' enctype='multipart/form-data'>
+<form method='POST' action='' >
     {% csrf_token %}
 
 {{ form|crispy }}
@@ -16,4 +16,5 @@
 </div>
 
 {% endblock content %}
-    
+
+<!-- #enctype='multipart/form-data' -->

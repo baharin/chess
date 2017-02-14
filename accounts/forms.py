@@ -26,6 +26,7 @@ class UserLoginForm(forms.Form):
 
 
 class UserRegisterForm(forms.ModelForm):
+    username= forms.CharField(label='Username')
     email=forms.EmailField(label='Email address')
     email2=forms.EmailField(label='Confirm Email')
     password= forms.CharField(widget=forms.PasswordInput)
@@ -43,11 +44,10 @@ class UserRegisterForm(forms.ModelForm):
         if email != email2:
             raise forms.ValidationError("Emails must match")
 
-        email_qs= user.objects.filter(email= email)
-        if email_qs.exists():
+        email3= user.objects.filter(email= email)
+        if email3.exists():
             raise forms.ValidationError("This email has been already registered")
         return email
-
 
 
 

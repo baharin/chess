@@ -46,7 +46,6 @@ table tr:nth-child(2n+1) td:nth-child(2n+1) {
         height:60px;
        }
 </style>
-
 <center>
     <table>
         {% for i in "01234567" %}
@@ -58,7 +57,7 @@ table tr:nth-child(2n+1) td:nth-child(2n+1) {
     {% for i in "01234567" %}
         <tr>
             {% for j in "01234567" %}
-                <td><img class="piece" src="{% static list1|index:i|index:j %}"></td>
+                <td><img class="piece" src="{% static final_state_list|index:i|index:j|index:0 %}"></td>
             {% endfor %}
         </tr>
     {% endfor %}
