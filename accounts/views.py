@@ -77,10 +77,12 @@ def game_view(request):
             state_list=test.update_state_with_move(origin,state_list,dist)
             print(state_list)
             AI_move=test.minimax(state_list,3,"AI")[1]
+
             print("AI",AI_move)
             game.state = AI_move
             game.save()
     #state_list = request.user.game.state.split('/')
+    state_list = request.user.game.state.split('/')
 
     chess_pieces_dict={
         "b":"b0.png",

@@ -4,7 +4,7 @@ class Chess:
     state_list = []
     
     def __init__(self, state_str):
-        self.state_list = self.make_matrix(state_str.split("/"))
+        self.state_list = self.make_matrix(state_str)
         
     def heuristic(self, state):
         values={"p":-1,"r":-2, "b":-3, "k":-0, "n":-2 ,"q":-9,
@@ -18,15 +18,23 @@ class Chess:
     def make_matrix(self, state_list):
         list1=[]
         final_state_list=[]
+        state_list=state_list.split("/")
+
         for i in range(0,8):
             for j in range(0,8):
                 list1.append(state_list[i][j])
             final_state_list.append(list1)
             list1=[]
+
         return final_state_list
 
     def make_str(self,state_list):
-        return [ '/'.join (l) for l in state_list ]
+        list1=[]
+        for i in range(0,8):
+            state_str=''.join(l for l in state_list[i])
+            list1.append(state_str)
+            list1.append("/")
+        return ''.join(l for l in list1)
     
     def move(self,origin,state_list,piece):
         i=origin[0]
@@ -561,9 +569,9 @@ class Chess:
             return (self.heuristic(node), None)
         if turn == "AI":
             best_value = -1000000
-            for child in self.possible_moves(node, "user"):
+            for child in self.possible_moves(node, "AI"):
                 if(child):
-                    v = self.minimax(child[:], depth - 1, "AI")[0]
+                    v = self.minimax(child[:], depth - 1, "user")[0]
                     if v>best_value:
                         best_value=v
                         final_state=child
@@ -572,9 +580,9 @@ class Chess:
             return (best_value,final_state)
         if turn == "user":
             best_value = 1000000
-            for child in self.possible_moves(node,"AI"):
+            for child in self.possible_moves(node,"user"):
                 if(child):
-                    v = self.minimax(child[:], depth - 1, "user")[0]
+                    v = self.minimax(child[:], depth - 1, "AI")[0]
                     if v<best_value:
                         best_value=v
                         final_state=child
